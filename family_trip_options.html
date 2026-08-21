@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>家族旅遊方案整理</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#2563eb;
+      --soft:#eff6ff;
+      --green:#047857;
+      --orange:#b45309;
+      --red:#b91c1c;
+      --radius:20px;
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      background:linear-gradient(180deg,#eef4ff 0,#f6f7fb 260px);
+      color:var(--text);
+      line-height:1.75;
+    }
+    a{color:var(--accent);text-decoration:none;word-break:break-all}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1040px;margin:auto;padding:24px 16px 64px}
+    .hero{
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.9);
+      box-shadow:var(--shadow);
+      border-radius:28px;
+      padding:28px;
+      margin-bottom:24px;
+    }
+    h1{font-size:clamp(30px,7vw,52px);line-height:1.15;margin:0 0 12px}
+    h2{font-size:26px;margin:0 0 14px}
+    h3{font-size:20px;margin:24px 0 10px}
+    p{margin:8px 0}
+    .muted{color:var(--muted)}
+    .pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+    .pill{
+      background:#fff;border:1px solid var(--line);border-radius:999px;
+      padding:6px 11px;font-size:14px
+    }
+    .overview{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(150px,1fr));
+      gap:12px;
+      overflow-x:auto;
+      padding-bottom:8px;
+      margin:18px 0 28px;
+    }
+    .overview .mini{
+      min-width:180px;background:var(--card);border:1px solid var(--line);
+      border-radius:18px;padding:16px;box-shadow:0 4px 18px rgba(15,23,42,.05)
+    }
+    .mini strong{display:block;font-size:17px;margin-bottom:6px}
+    .section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      margin:18px 0;
+      box-shadow:var(--shadow);
+    }
+    .section .title{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap
+    }
+    .tag{
+      font-size:13px;border-radius:999px;padding:4px 9px;background:var(--soft);color:#1d4ed8
+    }
+    .route{
+      background:#f8fafc;border:1px dashed #cbd5e1;border-radius:14px;
+      padding:14px 16px;margin:14px 0;font-weight:600
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px
+    }
+    .box{
+      border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff
+    }
+    ul{margin:8px 0;padding-left:22px}
+    li{margin:6px 0}
+    .link-list{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px
+    }
+    .link-card{
+      display:block;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fafafa
+    }
+    .link-card b{display:block;color:var(--text)}
+    .compare{
+      width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;
+      border:1px solid var(--line);border-radius:16px
+    }
+    .compare th,.compare td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+    .compare th{background:#f8fafc;text-align:left}
+    .compare tr:last-child td{border-bottom:none}
+    .note{
+      border-left:4px solid var(--accent);background:#f8fbff;padding:12px 14px;border-radius:10px;margin:14px 0
+    }
+    .food-title{margin-top:0}
+    .footer{color:var(--muted);text-align:center;margin-top:30px;font-size:14px}
+    @media (max-width:760px){
+      .grid,.link-list{grid-template-columns:1fr}
+      .section,.hero{padding:18px}
+      .compare{font-size:14px}
+      .compare th,.compare td{padding:9px 7px}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <h1>👨‍👩‍👧‍👦 家族旅遊方案整理</h1>
+    <p>約 4–5 人。家裡只有兩台機車，最多可載 4 人；到丹鳳捷運或樹林火車站，騎機車約 10 分鐘。</p>
+    <p>若搭公車：約走 5 分鐘到站＋搭車約 10 分鐘；Uber 約 10 分鐘，約 NT$100–200。</p>
+    <div class="pill-row">
+      <span class="pill">🚉 大眾運輸為主</span>
+      <span class="pill">👵 可彈性減少步行</span>
+      <span class="pill">🌧️ 有室內備案</span>
+      <span class="pill">🍴 每區都有美食可搭配</span>
+    </div>
+  </section>
+
+  <h2>五個方案快速比較</h2>
+  <div class="overview">
+    <div class="mini"><strong>🚄 方案一｜青埔高鐵輕旅行</strong><span class="muted">Xpark、華泰、藝文、IKEA。舒服、雨天也友善。</span></div>
+    <div class="mini"><strong>🏺 方案二｜鶯歌三峽藝術小旅行</strong><span class="muted">老街、陶瓷、美術館、三鶯線、三峽。</span></div>
+    <div class="mini"><strong>🌹 方案三｜圓山劍潭城市散步</strong><span class="muted">市集、美術館、古厝、花園、步道。</span></div>
+    <div class="mini"><strong>🏙️ 方案四｜松菸信義吃逛日</strong><span class="muted">松菸、誠品、百貨、展覽、美食。</span></div>
+    <div class="mini"><strong>🌊 方案五｜貢寮山海小旅行</strong><span class="muted">看海、單車、草嶺古道。旅行感最強。</span></div>
+  </div>
+
+  <section class="section">
+    <div class="title"><h2>🚄 方案一｜青埔高鐵輕旅行</h2><span class="tag">舒服／雨天友善</span></div>
+    <p><b>特色：</b>不用自己開車，每段車程都很短。雖然有轉乘，但其實就是一路往青埔前進。</p>
+
+    <div class="route">家裡 → 樹林火車站 → 板橋站 → 高鐵桃園站</div>
+
+    <div class="grid">
+      <div class="box">
+        <h3>交通</h3>
+        <ul>
+          <li>家裡 → 樹林火車站：約 10–15 分鐘（Uber／公車／機車，看人數決定）</li>
+          <li>樹林 → 板橋：台鐵約 8 分鐘，約 NT$22</li>
+          <li>板橋站內轉高鐵，不用再跑去別的車站</li>
+          <li>板橋 → 桃園：高鐵約 13 分鐘，約 NT$125</li>
+          <li><b>純車程約 30–40 分鐘</b></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>適合誰</h3>
+        <ul>
+          <li>想吹冷氣、不想走太累</li>
+          <li>怕天氣太熱或下雨</li>
+          <li>想逛街、看水族館、吃東西</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>景點</h3>
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/mqHuNuT3PkJYuKTV6" target="_blank"><b>華泰名品城</b>逛街、吃飯、休息</a>
+      <a class="link-card" href="https://maps.app.goo.gl/tCUfPwdoi3idrY576" target="_blank"><b>Xpark</b>室內主景點</a>
+      <a class="link-card" href="https://maps.app.goo.gl/LMrEhNBzEbd7o7qi9" target="_blank"><b>橫山書法藝術館</b>藝文散步</a>
+      <a class="link-card" href="https://maps.app.goo.gl/4eseqgCyHvBK44p26" target="_blank"><b>兒童美術館</b>建築與展覽</a>
+      <a class="link-card" href="https://maps.app.goo.gl/cW7n3Qfg6nM2BJBh9" target="_blank"><b>IKEA</b>可當行程收尾</a>
+    </div>
+
+    <h3>附近食物</h3>
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/K4KVVPqrP6GDoWRH6" target="_blank">餐廳選擇 1</a>
+      <a class="link-card" href="https://maps.app.goo.gl/8UTF55PG1aAN8R5WA" target="_blank">餐廳選擇 2</a>
+      <a class="link-card" href="https://maps.app.goo.gl/dswxoawqkyZFdJ3f9" target="_blank">餐廳選擇 3</a>
+    </div>
+
+    <div class="note">一句話：先到樹林，搭 8 分鐘火車去板橋，再換 13 分鐘高鐵，就到青埔；到站後景點又很集中。</div>
+  </section>
+
+  <section class="section">
+    <div class="title"><h2>🏺 方案二｜鶯歌・三峽藝術小旅行</h2><span class="tag">老街／藝文／新捷運</span></div>
+    <p><b>特色：</b>不是「一直轉車」，而是上午玩鶯歌，下午再搭三鶯線去三峽，換交通工具就順便換下一個旅遊區。</p>
+
+    <div class="route">家裡 → 樹林火車站 → 鶯歌車站 → 鶯歌景點 → 三鶯線 → 臺北大學／三峽</div>
+
+    <div class="grid">
+      <div class="box">
+        <h3>鶯歌</h3>
+        <ul>
+          <li>鶯歌老街</li>
+          <li>陶瓷博物館</li>
+          <li>新北美術館</li>
+          <li>鶯歌石步道</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>三峽</h3>
+        <ul>
+          <li>搭三鶯線到台北大學站</li>
+          <li>臺北大學走走</li>
+          <li>三峽老街</li>
+          <li>庶民美術館</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">舒服版本：鶯歌老街 → 陶瓷博物館／新北美術館擇一 → 三鶯線 → 臺北大學 → 三峽老街吃晚餐。</div>
+  </section>
+
+  <section class="section">
+    <div class="title"><h2>🌹 方案三｜圓山・劍潭城市散步</h2><span class="tag">花園／展覽／古厝／步道</span></div>
+    <p><b>特色：</b>景點很多，但其實都集中在圓山、花博、新生公園、劍潭這一帶，可以隨時刪減。</p>
+
+    <div class="grid">
+      <div class="box">
+        <h3>景點</h3>
+        <ul>
+          <li>圓山市集</li>
+          <li>臺北玫瑰園</li>
+          <li>臺北市立美術館</li>
+          <li>林安泰古厝</li>
+          <li>臺北典藏植物園</li>
+          <li>劍潭步道</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>建議走法</h3>
+        <p>圓山市集 → 北美館 → 玫瑰園 → 林安泰古厝。</p>
+        <p>如果大家還有體力，再把劍潭步道當成 Bonus。</p>
+      </div>
+    </div>
+
+    <h3>美食</h3>
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/Sd4Ptsjj7Rr2YPeg9?g_st=ac" target="_blank">美食選擇 1</a>
+      <a class="link-card" href="https://maps.app.goo.gl/TV71WJe4zjphSUV58?g_st=ac" target="_blank">美食選擇 2</a>
+      <a class="link-card" href="https://maps.app.goo.gl/nTz1mo2BvVu8FXKL7" target="_blank">美食選擇 3</a>
+      <a class="link-card" href="https://maps.app.goo.gl/bTr6x2rW56Divqj3A?g_st=ac" target="_blank">美食選擇 4</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="title"><h2>🏙️ 方案四｜松菸・信義城市吃逛日</h2><span class="tag">室內／展覽／百貨</span></div>
+    <p><b>特色：</b>適合天氣不好或不想一直曬太陽，行程可以自由調整，累了就進百貨公司休息。</p>
+
+    <div class="grid">
+      <div class="box">
+        <h3>景點</h3>
+        <ul>
+          <li>松山文創園區</li>
+          <li>誠品</li>
+          <li>附近百貨公司</li>
+          <li>袖珍博物館</li>
+          <li>臺北世貿酒展</li>
+          <li>臺北世貿旅展</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>舒服走法</h3>
+        <p>松菸 → 誠品／百貨 → 吃飯 → 世貿展覽</p>
+        <p>或：袖珍博物館 → 午餐 → 松菸 → 信義區逛街</p>
+      </div>
+    </div>
+
+    <h3>美食</h3>
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/ZFBZFJ3YXniSE82S6?g_st=ac" target="_blank"><b>蘇阿姨披薩</b></a>
+      <a class="link-card" href="https://maps.app.goo.gl/GPXhJfQJwS78ZHex8?g_st=ac" target="_blank"><b>好吃、但要排隊的義大利麵</b></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="title"><h2>🌊 方案五｜貢寮山海小旅行</h2><span class="tag">看海／單車／健行</span></div>
+    <p><b>特色：</b>交通時間最長，但旅行感也最強。比較像真正「出去玩一整天」。</p>
+
+    <div class="route">單程車程約 2 小時，來回約 4 小時；建議提前購買火車票。</div>
+
+    <div class="grid">
+      <div class="box">
+        <h3>可以做什麼</h3>
+        <ul>
+          <li>貢寮看海</li>
+          <li>騎腳踏車</li>
+          <li>爬草嶺古道</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>建議不要全塞</h3>
+        <p><b>輕鬆版：</b>火車 → 看海 → 吃飯 → 騎腳踏車 → 回家</p>
+        <p><b>健行版：</b>火車 → 草嶺古道 → 午餐 → 海邊休息 → 回家</p>
+      </div>
+    </div>
+
+    <div class="note">一句話：車程比較久，但就是專程去看海、騎車、走步道的一日小旅行。</div>
+  </section>
+
+  <section class="section">
+    <h2>📊 五方案比較表</h2>
+    <div style="overflow-x:auto">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>方案</th>
+            <th>主題</th>
+            <th>交通</th>
+            <th>體力</th>
+            <th>雨天</th>
+            <th>特色</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>🚄 青埔</td><td>Xpark＋華泰＋藝文</td><td>輕鬆</td><td>低～中</td><td>★★★★★</td><td>最舒服、冷氣最多</td></tr>
+          <tr><td>🏺 鶯歌三峽</td><td>老街＋博物館＋三鶯線</td><td>很順</td><td>中</td><td>★★★★☆</td><td>旅行感與輕鬆度平衡</td></tr>
+          <tr><td>🌹 圓山劍潭</td><td>花博＋美術館＋古厝＋步道</td><td>輕鬆</td><td>中～高</td><td>★★★☆☆</td><td>彈性最大</td></tr>
+          <tr><td>🏙️ 松菸信義</td><td>松菸＋百貨＋展覽＋美食</td><td>輕鬆</td><td>低～中</td><td>★★★★★</td><td>怕熱怕雨都適合</td></tr>
+          <tr><td>🌊 貢寮</td><td>海邊＋單車＋古道</td><td>較久</td><td>高</td><td>★☆☆☆☆</td><td>旅行感最強</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🏠 其他｜家裡附近特別美食</h2>
+    <p class="muted">適合不想跑遠、臨時改行程，或拿來當早餐／晚餐加碼。</p>
+
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/1TRRxdKwHdCXvZTw6?g_st=ac" target="_blank"><b>臭豆腐</b></a>
+      <a class="link-card" href="https://maps.app.goo.gl/SidTdRbb5hKwVXuaA?g_st=ac" target="_blank"><b>東山鴨頭</b></a>
+      <a class="link-card" href="https://maps.app.goo.gl/7Aax47TbFmeBxNMp8" target="_blank"><b>爆漿蛋餅</b></a>
+      <a class="link-card" href="https://maps.app.goo.gl/87qqbmqMRqZAvGkx5?g_st=ac" target="_blank"><b>料很多的蛋餅</b></a>
+      <a class="link-card" href="https://maps.app.goo.gl/HMsAhxffJq9FV7PA9?g_st=ac" target="_blank"><b>蠻酷的碳烤早餐</b></a>
+      <a class="link-card" href="https://maps.app.goo.gl/3zyXymgajg8zSy2M7?g_st=ac" target="_blank"><b>真的超級厲害的餡餅</b>要提前預約</a>
+      <a class="link-card" href="https://maps.app.goo.gl/5LKqP4XyoDfYde3R7?g_st=ac" target="_blank"><b>每天大排長龍的樹林三媽臭臭鍋</b>不是普通三媽，料實在、好吃</a>
+      <a class="link-card" href="https://maps.app.goo.gl/ES9tz35ofWhex23E6?g_st=ac" target="_blank"><b>很罪惡的港式大腸麵線</b></a>
+    </div>
+
+    <h3>真的超級好吃，但不特別</h3>
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/wi1verwX3mfrLxSt5?g_st=ac" target="_blank">好吃安全牌 1</a>
+      <a class="link-card" href="https://maps.app.goo.gl/A27VTS2PLowUaEHeA?g_st=ac" target="_blank">好吃安全牌 2</a>
+      <a class="link-card" href="https://maps.app.goo.gl/2tfgWztqdLXR22qx7?g_st=ac" target="_blank">好吃安全牌 3</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🌳 其他｜家裡附近景點／可以逛的地方</h2>
+    <div class="link-list">
+      <a class="link-card" href="https://maps.app.goo.gl/yF38q2j13AmXbGFL6?g_st=ac" target="_blank">
+        <b>新月橋</b>
+        騎腳踏車、野餐、釣魚；可一路騎往淡水，也可以往鶯歌方向。
+      </a>
+      <div class="link-card"><b>Costco</b>採買、吃東西、雨天備案</div>
+      <div class="link-card"><b>秀泰百貨</b>逛街、電影、吃飯</div>
+      <div class="link-card"><b>宏匯廣場</b>百貨、餐廳、室內備案</div>
+      <div class="link-card"><b>IKEA</b>逛家居、吃東西</div>
+      <div class="link-card"><b>新莊體育場</b>散步、活動</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>💡 怎麼選最快</h2>
+    <ul>
+      <li><b>最舒服：</b>方案一 青埔</li>
+      <li><b>最平衡：</b>方案二 鶯歌三峽</li>
+      <li><b>最適合散步：</b>方案三 圓山劍潭</li>
+      <li><b>最怕下雨也不怕：</b>方案四 松菸信義</li>
+      <li><b>最有旅行感：</b>方案五 貢寮</li>
+      <li><b>完全不想跑遠：</b>家附近美食＋新月橋＋百貨備案</li>
+    </ul>
+  </section>
+
+  <div class="footer">家族旅遊方案整理｜可直接用手機瀏覽器開啟</div>
+</div>
+</body>
+</html>
